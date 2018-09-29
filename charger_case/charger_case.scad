@@ -45,6 +45,7 @@ module walls() {
     cube([topwidth, topdepth, height]);
 }
 
+// bottom part
 difference() {
   walls();
 
@@ -54,3 +55,15 @@ difference() {
   powersupply();
 }
 
+// top part
+translate([0,160,0])
+difference() {
+    width = 75 + 50 + 5*wall_thickness;
+    
+    linear_extrude(height=20) {
+        polygon(points=[[0,0], [width,20], [width,40], [0,40]]);
+    }
+    
+    translate([wall_thickness,0,-bottom_thickness])
+    cube([width-2*wall_thickness,40-wall_thickness,20]);
+}
