@@ -66,3 +66,30 @@ translate([-40-2*wall_thickness,0,0])
 adapter();
 translate([-50-3*wall_thickness,0,0])
 adapter();
+
+
+module leftCover() {
+    difference() {
+        linear_extrude(height=20) {
+            polygon(points=[[0,0], [45+4*wall_thickness,20], [45+4*wall_thickness,40], [0,40]]);
+        }
+        translate([wall_thickness,0,0])
+        cube([45+2*wall_thickness,40-wall_thickness,20-bottom_thickness]);
+    }
+}
+
+module rightCover() {
+    difference() {
+        linear_extrude(height=20) {
+            polygon(points=[[0,0], [50+4*wall_thickness,20], [50+4*wall_thickness,40], [0,40]]);
+        }
+        translate([wall_thickness,0,0])
+        cube([52+2*wall_thickness,40-wall_thickness,20-bottom_thickness]);
+    }
+}
+
+translate([-2*wall_thickness,190])
+leftCover();
+
+translate([-50-7*wall_thickness, 180])
+rightCover();
